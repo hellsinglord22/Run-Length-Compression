@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class ComparisonPanel extends JPanel {
@@ -10,6 +11,7 @@ public class ComparisonPanel extends JPanel {
     private JTextField inputPathTextField;
     private JLabel inputPathLabel;
     private GridBagConstraints constraints;
+    private Border innerBorder , outerBorder;
 
     public ComparisonPanel() {
         /// Initialize attributes ///
@@ -19,9 +21,12 @@ public class ComparisonPanel extends JPanel {
         inputPathLabel = new JLabel("input path: ");
         inputPathTextField = new JTextField(15);
         constraints = new GridBagConstraints();
+        innerBorder = BorderFactory.createEtchedBorder();
+        outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 
         /// set properties ///
         setLayout(new GridBagLayout());
+        setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
         setComponentsPosition();
         setComponentsBehaviour();
 

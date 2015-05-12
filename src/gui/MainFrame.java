@@ -29,11 +29,11 @@ public class MainFrame extends JFrame {
 
     /// Methods ///
     private void setComponentsPositions() {
-
+        mainFrameContainer.add(mainFrameComparisonPanel);
     }
 
     private void setComponentsBehaviour() {
-
+        // Rooting information here ///
     }
 
 

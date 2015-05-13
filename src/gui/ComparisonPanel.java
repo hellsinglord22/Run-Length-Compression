@@ -40,6 +40,27 @@ public class ComparisonPanel extends JPanel {
 
     /// Methods ///
     private void setComponentsPosition() {
+        // first row ///
+        setGrid(0, 0);
+        constraints.weighty = 0.1;
+        constraints.insets = new Insets(5, 5, 5, 5);
+        add(inputPathLabel, constraints);
+
+        setGrid(0, 1);
+        add(inputPathTextField, constraints);
+
+        setGrid(0, 2);
+        add(browseInputPathButton, constraints);
+
+        /// second row ///
+        constraints.weighty = 2;
+        constraints.anchor = GridBagConstraints.LINE_END;
+        setGrid(1, 0);
+        add(encodeButton, constraints);
+
+        setGrid(1, 2);
+        constraints.anchor = GridBagConstraints.LINE_START;
+        add(decodeButton, constraints);
 
     }
 

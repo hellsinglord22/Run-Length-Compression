@@ -1,5 +1,7 @@
 package gui;
 
+import javafx.stage.FileChooser;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -14,6 +16,7 @@ public class ComparisonPanel extends JPanel {
     private JLabel inputPathLabel;
     private GridBagConstraints constraints;
     private Border innerBorder , outerBorder;
+    private JFileChooser myFileChooser;
 
     public ComparisonPanel() {
         /// Initialize attributes ///
@@ -25,6 +28,7 @@ public class ComparisonPanel extends JPanel {
         constraints = new GridBagConstraints();
         innerBorder = BorderFactory.createEtchedBorder();
         outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+        myFileChooser = new JFileChooser();
 
         /// set properties ///
         setLayout(new GridBagLayout());
@@ -69,7 +73,10 @@ public class ComparisonPanel extends JPanel {
         browseInputPathButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if (myFileChooser.showOpenDialog(ComparisonPanel.this) == JFileChooser.APPROVE_OPTION) {
+                    String path = myFileChooser.getSelectedFile().toString();
+                    inputPathTextField.setText(path);
+                }
             }
         });
 

@@ -1,6 +1,6 @@
 package gui;
 
-import javafx.stage.FileChooser;
+
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -47,7 +47,7 @@ public class ComparisonPanel extends JPanel {
         // first row ///
         setGrid(0, 0);
         constraints.weighty = 0.1;
-        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.insets = new Insets(30, 5, 5, 5);
         add(inputPathLabel, constraints);
 
         setGrid(0, 1);

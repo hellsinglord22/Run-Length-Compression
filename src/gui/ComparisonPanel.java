@@ -36,9 +36,6 @@ public class ComparisonPanel extends JPanel {
         setComponentsPosition();
         setComponentsBehaviour();
 
-
-
-
     }
 
 

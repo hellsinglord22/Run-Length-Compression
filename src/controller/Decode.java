@@ -3,6 +3,7 @@ package controller;
 import gui.CompressionInfo;
 import org.apache.commons.io.FileUtils;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,6 +21,8 @@ public class Decode implements CompressionBehaviour {
             data = decode(data);
             System.out.println(data);
             FileUtils.write(outputFile, data);
+            JOptionPane.showMessageDialog(null, "decoding complete\noutput.txt will be in the program home directory"
+                    , "Success", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (FileNotFoundException e) {
             System.err.println("File was not found!!!");

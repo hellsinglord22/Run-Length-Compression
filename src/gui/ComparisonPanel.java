@@ -2,6 +2,10 @@ package gui;
 
 
 
+import controller.CompressionBehaviour;
+import controller.Decode;
+import controller.Encode;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -17,6 +21,7 @@ public class ComparisonPanel extends JPanel {
     private GridBagConstraints constraints;
     private Border innerBorder , outerBorder;
     private JFileChooser myFileChooser;
+    private CompressionBehaviour formCompressionBehaviour;
 
     public ComparisonPanel() {
         /// Initialize attributes ///
@@ -80,14 +85,18 @@ public class ComparisonPanel extends JPanel {
         encodeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Encode encode = new Encode();
+                encode.encodeOrDecode(new CompressionInfo(ComparisonPanel.this, inputPathTextField.getText()));
+                formCompressionBehaviour = encode;
             }
         });
 
         decodeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Decode decode = new Decode();
+                decode.encodeOrDecode(new CompressionInfo(ComparisonPanel.this, inputPathTextField.getText()));
+                formCompressionBehaviour = decode;
             }
         });
     }

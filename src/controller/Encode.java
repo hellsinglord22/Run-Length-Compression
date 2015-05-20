@@ -1,5 +1,6 @@
 package controller;
 
+
 import gui.CompressionInfo;
 import org.apache.commons.io.FileUtils;
 
@@ -7,6 +8,11 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import static edu.rice.hj.Module1.*;
+import edu.rice.hj.api.HjMetrics;
+import edu.rice.hj.api.HjRunnable;
+import edu.rice.hj.runtime.config.HjSystemProperty;
+import edu.rice.hj.runtime.metrics.AbstractMetricsManager;
 
 public class Encode implements CompressionBehaviour {
     @Override
@@ -29,16 +35,20 @@ public class Encode implements CompressionBehaviour {
         }
 
     }
-    private static String encode(String source) {
+    private static String encode(String source)  {
         StringBuffer dest = new StringBuffer();
-        for (int i = 0; i < source.length(); i++) {
-            int runLength = 1;
-            while (i+1 < source.length() && source.charAt(i) == source.charAt(i+1)) {
-                runLength++;
-                i++;
-            }
-            dest.append(runLength);
-            dest.append(source.charAt(i));
+        for (final int[] i = {0}; i[0] < source.length(); i[0]++) {
+            final int[] runLength = {1};
+            finish(()->{
+                async(()->{
+                    while (i[0] +1 < source.length() && source.charAt(i[0]) == source.charAt(i[0] +1)) {
+                        runLength[0]++;
+                        i[0]++;
+                    }
+                });
+            });
+            dest.append(runLength[0]);
+            dest.append(source.charAt(i[0]));
         }
         return dest.toString();
     }

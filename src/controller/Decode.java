@@ -1,5 +1,6 @@
 package controller;
 
+
 import gui.CompressionInfo;
 import org.apache.commons.io.FileUtils;
 
@@ -9,6 +10,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static edu.rice.hj.Module1.*;
+import edu.rice.hj.api.HjMetrics;
+import edu.rice.hj.api.HjRunnable;
+import edu.rice.hj.runtime.config.HjSystemProperty;
+import edu.rice.hj.runtime.metrics.AbstractMetricsManager;
 
 public class Decode implements CompressionBehaviour {
     @Override
